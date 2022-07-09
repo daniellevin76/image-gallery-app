@@ -18,8 +18,8 @@ export const Favourites = () => {
         {results.length > 0 && (
           <ul className="image-list">
             {results.map((image) => (
-              <li key={image.image.id}>
-                <Image image={image.image} />
+              <li key={image.id}>
+                <Image image={image} />
               </li>
             ))}
           </ul>

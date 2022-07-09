@@ -2,7 +2,6 @@ import "../App.css";
 export const Image = ({ image, handleClickEvent }) => {
   //const { addImageToFavouriteList } = useContext(GlobalContext);
 
-  console.log(image);
   return (
     <div>
       {image.id ? (
