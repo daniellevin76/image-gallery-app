@@ -5,6 +5,7 @@ import "../App.css";
 export const Home = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   const onChange = (e) => {
     // e.preventDefault();
@@ -31,6 +32,23 @@ export const Home = () => {
     localStorage.setItem("imageList", JSON.stringify(results));
   }, [results]);
 
+  // save images to local Storage
+  useEffect(() => {
+    localStorage.setItem("favouriteList", JSON.stringify(favourites));
+  }, [favourites]);
+
+  //create a place holder for favourite images in local Storage
+
+  // Add an image to favourites list
+  const addImageToFavouriteList = (image) => {
+    const favouriteList = JSON.parse(localStorage.getItem("favouriteList"));
+    const newfavouriteList = JSON.stringify([
+      ...favouriteList,
+      { image: image },
+    ]);
+    localStorage.setItem("favouriteList", newfavouriteList);
+  };
+
   return (
     <>
       <div className="search-field">
@@ -46,7 +64,10 @@ export const Home = () => {
           <ul className="image-list">
             {results.map((image) => (
               <li key={image.id}>
-                <Image image={image} />
+                <Image
+                  image={image}
+                  handleClickEvent={addImageToFavouriteList}
+                />
               </li>
             ))}
           </ul>

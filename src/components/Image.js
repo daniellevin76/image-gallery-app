@@ -1,15 +1,6 @@
-import "../App.css"
-export const Image = ({ image }) => {
+import "../App.css";
+export const Image = ({ image, handleClickEvent }) => {
   //const { addImageToFavouriteList } = useContext(GlobalContext);
-
-  const addImageToFavouriteList = () => {
-    const favouriteList = JSON.parse(localStorage.getItem("favouriteList"));
-    const newfavouriteList = JSON.stringify([
-      ...favouriteList,
-      { image: image },
-    ]);
-    localStorage.setItem("favouriteList", newfavouriteList);
-  };
 
   console.log(image);
   return (
@@ -19,10 +10,12 @@ export const Image = ({ image }) => {
           className="image"
           src={image.urls.regular}
           alt={`${image.title}`}
-          onClick={() => addImageToFavouriteList(image)}
+          onClick={() => {
+            handleClickEvent(image);
+          }}
         />
       ) : (
-        <div>No image... </div>
+        <div>No Image... </div>
       )}
     </div>
   );
