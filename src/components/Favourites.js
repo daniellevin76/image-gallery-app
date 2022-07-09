@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "./Image";
+import "../App.css";
 
 export const Favourites = () => {
   const [results, setResults] = useState([]);
@@ -13,7 +14,6 @@ export const Favourites = () => {
 
   return (
     <>
-      <h3 className="heading">Favourites</h3>
       <div>
         {results.length > 0 && (
           <ul className="image-list">

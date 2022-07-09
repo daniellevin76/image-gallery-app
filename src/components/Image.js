@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import "../App.css"
 export const Image = ({ image }) => {
   //const { addImageToFavouriteList } = useContext(GlobalContext);
 
@@ -12,12 +11,13 @@ export const Image = ({ image }) => {
     localStorage.setItem("favouriteList", newfavouriteList);
   };
 
+  console.log(image);
   return (
     <div>
       {image.id ? (
         <img
           className="image"
-          src={image.urls.small}
+          src={image.urls.regular}
           alt={`${image.title}`}
           onClick={() => addImageToFavouriteList(image)}
         />

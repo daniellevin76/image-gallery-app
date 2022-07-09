@@ -33,13 +33,14 @@ export const Home = () => {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search for a image"
-        value={query}
-        onChange={onChange}
-      />
-
+      <div className="search-field">
+        <input
+          type="text"
+          placeholder="Search for a image"
+          value={query}
+          onChange={onChange}
+        />
+      </div>
       <div>
         {results.length > 0 && (
           <ul className="image-list">

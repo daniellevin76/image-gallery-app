@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 export const Header = () => {
   return (
@@ -11,10 +12,6 @@ export const Header = () => {
           </div>
 
           <ul className="nav-links">
-            <li>
-              <Link to="/">SEARCH</Link>
-            </li>
-
             <li>
               <Link to="/favourites">Favourites</Link>
             </li>

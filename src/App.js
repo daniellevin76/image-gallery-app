@@ -13,13 +13,15 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/favourites" element={<Favourites />} />
-      </Routes>
-    </Router>
+    <div className="container">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favourites" element={<Favourites />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
