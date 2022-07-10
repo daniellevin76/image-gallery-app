@@ -5,12 +5,23 @@ import "../App.css";
 export const Favourites = () => {
   const [results, setResults] = useState([]);
 
+  const favouriteList = JSON.parse(localStorage.getItem("favouriteList"));
   useEffect(() => {
-    const favouriteList = JSON.parse(localStorage.getItem("favouriteList"));
     if (favouriteList) {
       setResults(favouriteList);
     }
-  }, []);
+  }, [favouriteList]);
+
+  const removeFromFavourites = (image) => {
+    const index = results.findIndex((result) => result.id === image.id);
+    console.log(results);
+    console.log(index);
+    // console.log("removeImage");
+    results.splice(results[index], 1);
+    console.log(results);
+    setResults(results);
+    localStorage.setItem("favouriteList", JSON.stringify(results));
+  };
 
   return (
     <>
@@ -19,7 +30,7 @@ export const Favourites = () => {
           <ul className="image-list">
             {results.map((image) => (
               <li key={image.id}>
-                <Image image={image} />
+                <Image image={image} handleClickEvent={removeFromFavourites} />
               </li>
             ))}
           </ul>
