@@ -1,5 +1,13 @@
 import "../App.css";
+
+/**
+ *
+ * Image Component is created. handleClickEvent either adds image
+ * to favourites or removes image from favourites depending on
+ * where the image is rendered
+ */
 export const Image = ({ image, handleClickEvent }) => {
+  console.log("image render");
   //const { addImageToFavouriteList } = useContext(GlobalContext);
 
   return (

@@ -5,13 +5,11 @@ import { Favourites } from "./components/Favourites";
 import { Home } from "./components/Home";
 import "./App.css";
 
-//import { GlobalProvider } from "./context/GlobalState";
-
-/**   <GlobalProvider>
- *
+/**
+ * This object only functions as routing to the different components
  */
-
 function App() {
+  console.log("app render");
   return (
     <div className="container">
       <Router>

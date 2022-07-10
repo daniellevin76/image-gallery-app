@@ -2,13 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Image } from "./Image";
 import "../App.css";
 
+/**
+
+ In this object search result from api is retrieved and save to local storage
+ under "imageList"
+ The images are rendered and a method that adds an image a "favouriteList" 
+ is created. THe method is passed as an argument to the Image component
+ * 
+ */
 export const Home = () => {
+  console.log("home render");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [favourites, setFavourites] = useState([]);
 
+  // setQUery onChange in input field
   const setSearchValue = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     setQuery(e.target.value);
   };
 
@@ -24,10 +34,10 @@ export const Home = () => {
     }
   };
 
-  //fetch imags from unsplash
+  //Call fetchAPI to fetch imags from unsplash
   const fetchImages = () => {
-    fetchRequest();
-    // setQuery("");
+    //fetchRequest();
+    //setQuery("");
   };
 
   // save images to local Storage
@@ -35,19 +45,25 @@ export const Home = () => {
     localStorage.setItem("imageList", JSON.stringify(results));
   }, [results]);
 
+  //Add a a clicked image to favourite list
   const addImageToFavouriteList = (image) => {
+    //check if the item is allready in local storage
     const itemExists = favourites.some((fav) => {
       return image.id === fav.id;
     });
 
+    //it item not in local storage add to favourites
     if (!itemExists) {
       setFavourites([...favourites, image]);
     }
   };
+
+  //When favourites is rerendered set local Storage favourites
   useEffect(() => {
     localStorage.setItem("favouriteList", JSON.stringify(favourites));
   }, [favourites]);
-  console.log(favourites);
+
+  //Render images retrieved upon search
   return (
     <>
       <div className="search-field">
@@ -57,7 +73,7 @@ export const Home = () => {
           onChange={setSearchValue}
         />
 
-        <button onClick={fetchImages}>FETCH</button>
+        <button onClick={fetchRequest}>FETCH</button>
       </div>
       <div>
         {results.length > 0 && (

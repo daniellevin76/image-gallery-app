@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 
 export const Header = () => {
+  console.log("header render");
   return (
     <header>
       <div className="container">
